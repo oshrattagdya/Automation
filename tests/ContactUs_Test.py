@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from time import sleep
+import mysql.connector
+
 
 def init():
     driver = webdriver.Chrome('..\drivers\chromedriver.exe')
@@ -8,12 +10,19 @@ def init():
     driver.maximize_window()
     return driver
 
+def connect_database():
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="10203040",
+            database="sakila")
+
 name = "oshrat"
 subject = " n "
 email = "oshrattagadya@gmail.com"
 message = "bla bla bla"
 
-1
+#1
 def test_contact_correctly():
     driver = init()
     driver.find_element(By.XPATH,"//body[1]/div[1]/header[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/nav[1]/div[1]/ul[1]/li[7]/a[1]").click()
@@ -32,6 +41,8 @@ def test_contact_correctly():
     driver.quit()
 
 test_contact_correctly()
+
+select * from message
 
 #2
 def test_when_subject_null():
